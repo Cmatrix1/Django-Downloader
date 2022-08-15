@@ -9,7 +9,7 @@
         </div>
 
 
-    <form action="http://127.0.0.1:8000/download/{{id}}" id="form__submit">
+    <form id="form__submit" method="post">
         {% csrf_token %}
     </form>
 
