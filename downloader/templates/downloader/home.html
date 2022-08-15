@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% for i in files %}
+    
+        <a href="{% url 'test' i.id %}">DOWNLOAD {{i.dl_file.name}}</a> 
+        <br><br>
+    
+    {% endfor %}
+
+{% endblock content %}

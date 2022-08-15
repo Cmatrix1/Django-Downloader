@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if mes %}
+        <h1 style="color:red ;text-align: center;"></h1>
+    {% else %}
+        <div class="downloadbox">
+            <h2 class="wait">Wait </h2>
+        </div>
+
+
+    <form action="http://127.0.0.1:8000/download/{{id}}" id="form__submit">
+        {% csrf_token %}
+    </form>
+
+    <script>
+        var index = 10;
+        var timer = document.querySelector(".wait")
+
+        var myfunc = setInterval(function() {
+            if (index > 0) {
+                timer.innerHTML = "Wait " + index
+                index -= 1
+                console.log(index)
+            } if (index === 0) {
+                timer.innerHTML = "Downloading ... "
+                index = -1
+                let form = document.getElementById("form__submit");
+                form.submit();
+            }
+
+        }, 1000)
+    </script> 
+    {% endif %}
+
+{% endblock content %}
+
